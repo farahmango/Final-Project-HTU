@@ -9,7 +9,6 @@ public class TestCase5 extends Parameters {
 
 	@BeforeTest
 	public  void beforeTest() {
-
 		driver.manage().window().maximize();
 		driver.get(URLS[1]);
 			 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
@@ -21,13 +20,8 @@ public class TestCase5 extends Parameters {
 					    }
 					  catch(Exception e){
 							driver.findElement(By.xpath("//*[@id=\"moe-dontallow_button\"]")).click();
-					  	}				
-
-	} 
-	
-
-		
-	
+			  	}				
+	} 	
 	@Test(priority = 1)
 	public void englishWebsiteTitleTest() {
 	        
@@ -37,7 +31,6 @@ public class TestCase5 extends Parameters {
 	        myAssert.assertEquals(ActualTitle, ExpectedTitle);
 
 	}
-
 	@Test(priority = 2)
 	public void arabicWebsiteTitleTest() {
 		
@@ -45,10 +38,7 @@ public class TestCase5 extends Parameters {
         String ActualTitle = driver.getTitle();
         String ExpectedTitle = "المسافر: رحلات، فنادق، أنشطة ممتعة و تذاكر طيران";
         myAssert.assertEquals(ActualTitle, ExpectedTitle);
-
 	}
-
-	
 	@AfterTest
 	public void afterTest() {
 		myAssert.assertAll();

@@ -31,7 +31,6 @@ public class TestCase6 extends Parameters {
 
 	} 
 	
-	
 	@Test()
 	public void hotelsBookTest() throws InterruptedException {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -82,7 +81,6 @@ public class TestCase6 extends Parameters {
 		}	
 
 	}
-	
 	
 	@AfterTest
 	public void afterTest() {

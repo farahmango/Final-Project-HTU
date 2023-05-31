@@ -31,18 +31,15 @@ public class TestCase4 extends Parameters {
 					driver.get(URLS[1]);
 
 	}
-	
-	
 	@Test()
 	public void randomWebSiteLanguage() throws InterruptedException {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
 		int random = myRandom.nextInt(URLS.length);
 		driver.get(URLS[random]);
 		String url = driver.getCurrentUrl();
+		
 		if(url.equals(URLS[1])) {
-			
-			System.out.println("en => from riyadh to dubai");
+			System.out.println("english website => from riyadh to dubai");
 			
 					WebElement oneWay = driver.findElement(By.xpath("/html/body/div[2]/section[2]/div[4]/div/div/div/div[1]/div/div[1]/div[1]/div[1]"));
 					oneWay.click();
@@ -59,11 +56,8 @@ public class TestCase4 extends Parameters {
 					WebElement searchButton = driver.findElement(By.cssSelector("section.sc-kvkilB.guCDGw:nth-child(3) div.sc-kAKrxA.iyOiEz:nth-child(4) div.sc-jKJlTe.cjrpqw.container div.sc-lhLRcH.fKjKUN div.tab-content div.fade.tab-pane.active.show:nth-child(1) div.sc-ekkqgF.gaGyIe div.sc-cLQEGU.laMIkr.sc-iBmynh.sc-dTLGrV.jRAOlW.row:nth-child(2) div.sc-dxgOiQ.hTjMfW.sc-fKGOjr.cHRnSh.col-lg-5:nth-child(2) div.sc-cLQEGU.laMIkr.sc-iBmynh.hJobBs.row div.sc-dxgOiQ.hTjMfW.sc-fKGOjr.cHRnSh.col-lg-4.col-md-3:nth-child(2) div.sc-fHSTwm.llJaQY.d-none.d-md-block > button.sc-jTzLTM.hQpNle.sc-cNnxps.gdptwU.btn.btn-primary"));
 					searchButton.click();
 					
-					
-					
 		}else if(url.equals(URLS[0])) {
-			
-			System.out.println("ar => from amman to jeddah");
+			System.out.println("arabic website => from amman to jeddah");
 			WebElement oneWay = driver.findElement(By.xpath("/html/body/div[2]/section[2]/div[4]/div/div/div/div[1]/div/div[1]/div[1]/div[1]"));
 			oneWay.click();
 			
@@ -77,24 +71,18 @@ public class TestCase4 extends Parameters {
 			
 			Thread.sleep(5000);
 			WebElement searchButton = driver.findElement(By.cssSelector("section.sc-kvkilB.loUbdP:nth-child(3) div.sc-kAKrxA.iyOiEz:nth-child(4) div.sc-jKJlTe.cjrpqw.container div.sc-lhLRcH.fKjKUN div.tab-content div.fade.tab-pane.active.show:nth-child(1) div.sc-ekkqgF.gaGyIe div.sc-cLQEGU.laMIkr.sc-iBmynh.sc-dTLGrV.jRAOlW.row:nth-child(2) div.sc-dxgOiQ.hTjMfW.sc-fKGOjr.cHRnSh.col-lg-5:nth-child(2) div.sc-cLQEGU.laMIkr.sc-iBmynh.hJobBs.row div.sc-dxgOiQ.hTjMfW.sc-fKGOjr.cHRnSh.col-lg-4.col-md-3:nth-child(2) div.sc-fHSTwm.llJaQY.d-none.d-md-block > button.sc-jTzLTM.eJkYKb.sc-cNnxps.gdptwU.btn.btn-primary"));
-			searchButton.click();
-			
-			
+			searchButton.click();			
 		}else{
-
 			myAssert.assertEquals(
 					url.equals(URLS[0]) || url.equals(URLS[1]),
 					true, "this is to test the website url ");
 
-		}
-		
+		}		
 	}
 
 	@AfterTest
 	public void afterTest(){
-		myAssert.assertAll();
-		
-		
+		myAssert.assertAll();	
 	}
 	
 	

@@ -28,8 +28,6 @@ public class TestCase1 extends Parameters {
 	
 	@Test
 	public void  checkTheDefualtLanguage() {
-//		String Language = driver.findElement(By.xpath("//*[@id=\"__next\"]/header/div/div[1]/div[2]/div/a[1]")).getText();
-//		myAssret.assertEquals(Language,"العربية");
 		String CurrentURL = driver.getCurrentUrl();
 		myAssert.assertEquals(CurrentURL, "https://www.almosafer.com/en");
 			
