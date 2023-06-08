@@ -15,22 +15,9 @@ public class TestCase4 extends Parameters {
 	
 	@BeforeTest
 	public void beforeTest(){
-
 		driver.manage().window().maximize();
-		driver.get(URLS[1]);
-			 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-				 try{
-					 driver.switchTo().frame("wiz-iframe-intent");
-						driver.findElement(By.xpath("//*[@id=\"contentDiv\"]/div/div/span")).click();
-						driver.switchTo().defaultContent();
-						driver.findElement(By.xpath("//*[@id=\"moe-dontallow_button\"]")).click();
-					    }
-					  catch(Exception e){
-							driver.findElement(By.xpath("//*[@id=\"moe-dontallow_button\"]")).click();
-					  	}				
-					driver.get(URLS[1]);
-
 	}
+	
 	@Test()
 	public void randomWebSiteLanguage() throws InterruptedException {
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -46,15 +33,24 @@ public class TestCase4 extends Parameters {
 					
 					WebElement countryFrom = driver.findElement(By.xpath("/html/body/div[2]/section[2]/div[4]/div/div/div/div[1]/div/div[2]/div[1]/div/div[2]/div[1]/div/div/div/input"));
 					Thread.sleep(2000);
-					countryFrom.sendKeys(citiesInEnglish[0] + Keys.ARROW_DOWN+ Keys.ENTER );
+					countryFrom.sendKeys(citiesInEnglish[0]+Keys.ENTER);
+					Thread.sleep(5000);
 					
 					WebElement countryTo = driver.findElement(By.xpath("/html/body/div[2]/section[2]/div[4]/div/div/div/div[1]/div/div[2]/div[1]/div/div[2]/div[3]/div[1]/div/div/input"));
 					Thread.sleep(2000);
-					countryTo.sendKeys(citiesInEnglish[1]+  Keys.ARROW_DOWN+ Keys.ENTER);
-			
-					Thread.sleep(5000);
-					WebElement searchButton = driver.findElement(By.cssSelector("section.sc-kvkilB.guCDGw:nth-child(3) div.sc-kAKrxA.iyOiEz:nth-child(4) div.sc-jKJlTe.cjrpqw.container div.sc-lhLRcH.fKjKUN div.tab-content div.fade.tab-pane.active.show:nth-child(1) div.sc-ekkqgF.gaGyIe div.sc-cLQEGU.laMIkr.sc-iBmynh.sc-dTLGrV.jRAOlW.row:nth-child(2) div.sc-dxgOiQ.hTjMfW.sc-fKGOjr.cHRnSh.col-lg-5:nth-child(2) div.sc-cLQEGU.laMIkr.sc-iBmynh.hJobBs.row div.sc-dxgOiQ.hTjMfW.sc-fKGOjr.cHRnSh.col-lg-4.col-md-3:nth-child(2) div.sc-fHSTwm.llJaQY.d-none.d-md-block > button.sc-jTzLTM.hQpNle.sc-cNnxps.gdptwU.btn.btn-primary"));
+					countryTo.sendKeys(citiesInEnglish[1]+Keys.ENTER);
+
+					Thread.sleep(3000);
+					WebElement searchButton = driver.findElement(By.xpath("/html/body/div[2]/section[2]/div[4]/div/div/div/div[1]/div/div[2]/div[2]/div/div[2]/div/button"));
 					searchButton.click();
+					
+					String actualCountryFrom = "Riyadh";
+					String actualCountryTo = "Dubai";
+					Thread.sleep(5000);
+					String expectedCountryFrom = driver.findElement(By.xpath("/html/body/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div/div/div[2]")).getText();
+					String expectedCountryTo = driver.findElement(By.xpath("/html/body/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]/div/div/div[2]")).getText();
+					myAssert.assertEquals(actualCountryFrom, expectedCountryFrom);
+					myAssert.assertEquals(actualCountryTo, expectedCountryTo);
 					
 		}else if(url.equals(URLS[0])) {
 			System.out.println("arabic website => from amman to jeddah");
@@ -62,16 +58,25 @@ public class TestCase4 extends Parameters {
 			oneWay.click();
 			
 			WebElement countryFrom = driver.findElement(By.xpath("/html/body/div[2]/section[2]/div[4]/div/div/div/div[1]/div/div[2]/div[1]/div/div[2]/div[1]/div/div/div/input"));
-			Thread.sleep(2000);
-			countryFrom.sendKeys(citiesInArabic[0] + Keys.ARROW_DOWN+ Keys.ENTER);
-			
-			WebElement countryTo = driver.findElement(By.xpath("/html/body/div[2]/section[2]/div[4]/div/div/div/div[1]/div/div[2]/div[1]/div/div[2]/div[3]/div[1]/div/div/input"));
-			Thread.sleep(2000);
-			countryTo.sendKeys(citiesInArabic[1]+ Keys.ARROW_DOWN+ Keys.ENTER);
-			
+			Thread.sleep(3000);
+			countryFrom.sendKeys(citiesInArabic[0]+Keys.ENTER );
 			Thread.sleep(5000);
-			WebElement searchButton = driver.findElement(By.cssSelector("section.sc-kvkilB.loUbdP:nth-child(3) div.sc-kAKrxA.iyOiEz:nth-child(4) div.sc-jKJlTe.cjrpqw.container div.sc-lhLRcH.fKjKUN div.tab-content div.fade.tab-pane.active.show:nth-child(1) div.sc-ekkqgF.gaGyIe div.sc-cLQEGU.laMIkr.sc-iBmynh.sc-dTLGrV.jRAOlW.row:nth-child(2) div.sc-dxgOiQ.hTjMfW.sc-fKGOjr.cHRnSh.col-lg-5:nth-child(2) div.sc-cLQEGU.laMIkr.sc-iBmynh.hJobBs.row div.sc-dxgOiQ.hTjMfW.sc-fKGOjr.cHRnSh.col-lg-4.col-md-3:nth-child(2) div.sc-fHSTwm.llJaQY.d-none.d-md-block > button.sc-jTzLTM.eJkYKb.sc-cNnxps.gdptwU.btn.btn-primary"));
-			searchButton.click();			
+
+			WebElement countryTo = driver.findElement(By.xpath("/html/body/div[2]/section[2]/div[4]/div/div/div/div[1]/div/div[2]/div[1]/div/div[2]/div[3]/div[1]/div/div/input"));
+			Thread.sleep(3000);
+			countryTo.sendKeys(citiesInArabic[1]+Keys.ENTER);
+			
+			Thread.sleep(3000);
+			WebElement searchButton = driver.findElement(By.xpath("/html/body/div[2]/section[2]/div[4]/div/div/div/div[1]/div/div[2]/div[2]/div/div[2]/div/button"));
+			searchButton.click();	
+			
+			String actualCountryFrom = "عمان";
+			String actualCountryTo = "جدة";
+			Thread.sleep(5000);
+			String expectedCountryFrom = driver.findElement(By.xpath("/html/body/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/div/div/div[2]")).getText();
+			String expectedCountryTo = driver.findElement(By.xpath("/html/body/div[2]/div[2]/div[1]/div[2]/div[1]/div[2]/div/div/div[2]")).getText();
+			myAssert.assertEquals(actualCountryFrom, expectedCountryFrom);
+			myAssert.assertEquals(actualCountryTo, expectedCountryTo);
 		}else{
 			myAssert.assertEquals(
 					url.equals(URLS[0]) || url.equals(URLS[1]),
@@ -82,7 +87,9 @@ public class TestCase4 extends Parameters {
 
 	@AfterTest
 	public void afterTest(){
-		myAssert.assertAll();	
+		myAssert.assertAll();
+		driver.quit();
+
 	}
 	
 	

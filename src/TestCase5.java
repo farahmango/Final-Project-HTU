@@ -9,19 +9,9 @@ public class TestCase5 extends Parameters {
 
 	@BeforeTest
 	public  void beforeTest() {
-		driver.manage().window().maximize();
-		driver.get(URLS[1]);
-			 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-				 try{
-					 driver.switchTo().frame("wiz-iframe-intent");
-						driver.findElement(By.xpath("//*[@id=\"contentDiv\"]/div/div/span")).click();
-						driver.switchTo().defaultContent();
-						driver.findElement(By.xpath("//*[@id=\"moe-dontallow_button\"]")).click();
-					    }
-					  catch(Exception e){
-							driver.findElement(By.xpath("//*[@id=\"moe-dontallow_button\"]")).click();
-			  	}				
+		driver.manage().window().maximize();			
 	} 	
+	
 	@Test(priority = 1)
 	public void englishWebsiteTitleTest() {
 	        
@@ -42,9 +32,6 @@ public class TestCase5 extends Parameters {
 	@AfterTest
 	public void afterTest() {
 		myAssert.assertAll();
-		
-	}
-	
-	
-	
+		driver.quit();	
+	}	
 }
